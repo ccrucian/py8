@@ -11,7 +11,6 @@ def analyze_matrix_data() -> None:
     import matplotlib.pyplot as plt
 
     rng = np.random.default_rng(42)
-    
     data = rng.integers(0, 100, size=1000)
 
     df = pd.DataFrame({"Data": data})
