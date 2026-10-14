@@ -82,22 +82,20 @@ def compare_dependency_management() -> bool:
     return installed
 
 
-def main() -> int:
+def main() -> None:
     """Check dependencies and report analysis errors without a traceback."""
     print("LOADING STATUS: Loading programs...")
 
     if not compare_dependency_management():
         print("Cannot analyze data: missing dependencies.")
         print("Install them using one of the workflows shown above.")
-        return 1
+        return
 
     try:
         analyze_matrix_data()
-    except (ImportError, OSError, ValueError, RuntimeError) as error:
-        print(f"Analysis failed: {error}", file=sys.stderr)
-        return 1
-    return 0
+    except (ImportError, OSError, ValueError, RuntimeError) as e:
+        print(f"Analysis failed: {e}", file=sys.stderr)
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    main()
