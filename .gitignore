@@ -1,0 +1,15 @@
+# Ambienti virtuali
+matrix_env/
+.venv/
+venv/
+
+# Cache e file generati da Python
+__pycache__/
+*.py[cod]
+.mypy_cache/
+*.pdf
+
+# Configurazioni locali e segreti
+.env
+.env.*
+!.env.example
