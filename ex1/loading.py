@@ -4,13 +4,10 @@ from importlib.metadata import PackageNotFoundError, version
 
 
 def analyze_matrix_data() -> None:
-    """Generate Matrix data, analyze it, and save a visualization."""
-    import matplotlib
+
+    import matplotlib.pyplot as plt
     import numpy as np
     import pandas as pd
-
-    matplotlib.use("Agg")
-    import matplotlib.pyplot as plt
 
     print("\nAnalyzing Matrix data...")
     rng = np.random.default_rng(42)
@@ -22,15 +19,12 @@ def analyze_matrix_data() -> None:
     print(f"Standard deviation: {np.std(data):.2f}")
 
     print("Generating visualization...")
-    fig, ax = plt.subplots()
     try:
-        ax.hist(data, bins=10, edgecolor="red")
-        ax.set_title("Matrix Data Distribution")
-        ax.set_xlabel("Simulated value")
-        ax.set_ylabel("Count")
-        fig.savefig("matrix_analysis.png")
+        plt.hist(data, bins=10)
+        plt.title("Matrix data")
+        plt.savefig("matrix_analysis.png")
     finally:
-        plt.close(fig)
+        plt.close()
 
     print("Analysis complete!")
     print("Results saved to: matrix_analysis.png")
@@ -46,7 +40,6 @@ def check_dependency(name: str) -> bool:
 
 
 def package_version(name: str) -> str:
-    """Read the installed version from package metadata."""
     try:
         return version(name)
     except PackageNotFoundError:
@@ -54,7 +47,7 @@ def package_version(name: str) -> str:
 
 
 def compare_dependency_management() -> bool:
-    """Show installed versions and compare pip and Poetry workflows."""
+
     print("\nChecking dependencies:")
     print("Current Python:", sys.executable)
     dependencies = ["numpy", "pandas", "matplotlib"]
@@ -83,7 +76,6 @@ def compare_dependency_management() -> bool:
 
 
 def main() -> None:
-    """Check dependencies and report analysis errors without a traceback."""
     print("LOADING STATUS: Loading programs...")
 
     if not compare_dependency_management():
