@@ -8,6 +8,7 @@ __pycache__/
 *.py[cod]
 .mypy_cache/
 *.pdf
+*.png
 
 # Configurazioni locali e segreti
 .env
